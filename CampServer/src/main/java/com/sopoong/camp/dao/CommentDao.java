@@ -16,13 +16,17 @@ public class CommentDao {
 	private SqlSession sqlSession;
 	
 	
-	public List<Comment> listComment() {
-		List<Comment> result = sqlSession.getMapper(CampMapper.class).listComment();
+	public List<Comment> listComment(String camp) {
+		List<Comment> result = sqlSession.getMapper(CampMapper.class).listComment(camp);
 		return result;
 	}
 
 
 	public int addComment(Comment cm) {
 		return sqlSession.getMapper(CampMapper.class).addComment(cm);
+	}
+	
+	public int delComment(Comment cm) {
+		return sqlSession.getMapper(CampMapper.class).delComment(cm);
 	}
 }

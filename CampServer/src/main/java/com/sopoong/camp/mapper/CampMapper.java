@@ -6,8 +6,10 @@ import com.sopoong.camp.vo.Comment;
 
 public interface CampMapper {
 
-	List<Comment> listComment();
+	List<Comment> listComment(String camp);
 
 	int addComment(Comment cm);
+	
+	int delComment(Comment cm);
 
 }

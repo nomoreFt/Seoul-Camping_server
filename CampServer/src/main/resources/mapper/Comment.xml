@@ -2,25 +2,26 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sopoong.camp.mapper.CampMapper"><!-- package랑 mapper class명과 일치 -->
 
-	<select id="listComment" parameterType="com.sopoong.camp.vo.Comment"<!-- id, paratype 수정-->
-		resultType="com.sopoong.camp.vo.Comment">
+	<select id="listComment" parameterType="com.sopoong.camp.vo.Comment" resultType="com.sopoong.camp.vo.Comment">
 		select * from comment
 		<where>
-			<if test="name != null">
-				name = #{name}
-			</if>
-			<if test="star != null">
-				star = #{star}
-			</if>
+			camp = #{camp}
 		</where>
+		order by regdate desc
 	</select>
 	
 	<insert id="addComment" parameterType="com.sopoong.camp.vo.Comment">		
 		INSERT INTO comment
-		(`username`,`password`,`email`)
+		(`camp`,`id`,`name`,`text`,`star`,`password`)
 		VALUES
-		(#{username},#{password},#{email})
+		(#{camp},#{id},#{name},#{text},#{star},#{password})
 	</insert>
 	
-	
+	<delete id="delComment" parameterType="com.sopoong.camp.vo.Comment">
+		delete from comment
+		<where>
+		num = #{num} and
+		password = #{password}
+		</where>
+	</delete>
 </mapper>

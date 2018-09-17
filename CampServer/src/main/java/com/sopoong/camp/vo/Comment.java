@@ -7,9 +7,12 @@ import lombok.Data;
 @Data
 public class Comment {
 
-	private Integer id;
+	private int num;
+	private String camp;
+	private String id;
 	private String name;
 	private String text;
 	private double star;
 	private Date regdate;
+	private String password;
 }
